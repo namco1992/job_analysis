@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+<style>
+    .jumbotron {
+        background-size: cover;
+        background-image: url('http://7xrau0.com5.z0.glb.clouddn.com/04561a0ccee9677.jpg');
+        background-repeat: no-repeat;
+        min-height: 350px;
+    }
+</style>
+{% endblock %}
+
+{% block title %}什么值得做{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Hello world!</h1>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

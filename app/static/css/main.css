@@ -1,0 +1,75 @@
+body {
+  background-color: #f5f5f5;
+  font-family: "Helvetica Neue", Helvetica, "Microsoft YaHei",  "微软雅黑", STXihei, "华文细黑", Arial, sans-serif;
+}
+
+h1,h3,h4 {
+  font-family: Georgia, "Times New Roman",
+             "Microsoft YaHei", "微软雅黑",
+             STXihei, "华文细黑",
+             serif;
+}
+
+p {
+  font-family:  Helvetica, "Microsoft YaHei",  "微软雅黑", STXihei, "华文细黑", Arial, sans-serif;
+}
+
+h1 {
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 15px;
+}
+h3 {
+  color: gray;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+h4 {
+  color: gray;
+}
+
+.center-block {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.navbar {
+    margin-bottom: 0;
+  }
+
+html,body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 60px;
+}
+#footer {
+  background-color: black;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

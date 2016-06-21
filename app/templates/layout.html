@@ -1,0 +1,77 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='css/main.css')}}">
+{{super()}}
+<link rel="icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon" />
+<link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon" />
+<link rel="apple-touch-icon" href="{{url_for('static', filename='img/favicon.png')}}" sizes="57x57" />
+{% endblock %}
+
+{% block title %}什么值得做{% endblock %}
+
+{% block body %}
+<div id='wrap'>
+{% block navbar %}
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle"
+        data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">什么值得做</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  {% block msg_content %}
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      {% if category == 'message' %}
+      <div class="alert alert-warning">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        {{ message|safe }}
+      </div>
+      {% else %}
+      <div class="alert {{ category }}">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        {{ message|safe }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+  {% endblock %}
+  {% block page_content %}{% endblock %}
+  <div id="push"></div>
+{% endblock %}
+<!-- footer begin -->
+</div>
+  <div id="footer">
+      <div class="container">
+        <div class="text-center">
+          <p class="text-muted" style="margin-top: 20px">Copyright © 2016 example.com All rights reserved. </p>
+        </div>
+      </div>
+  </div>
+  {% block scripts %}
+    {{ super() }}
+  {% endblock %}
+{% endblock %}
+
+
