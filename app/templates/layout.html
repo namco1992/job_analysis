@@ -14,7 +14,7 @@
 {% block body %}
 <div id='wrap'>
 {% block navbar %}
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle"
@@ -69,6 +69,7 @@
         </div>
       </div>
   </div>
+
   {% block scripts %}
     {{ super() }}
   {% endblock %}

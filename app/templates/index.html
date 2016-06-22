@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+  <link href="//cdn.bootcss.com/c3/0.4.11/c3.css" rel="stylesheet">
 <style>
-    .jumbotron {
-        background-size: cover;
-        background-image: url('http://7xrau0.com5.z0.glb.clouddn.com/04561a0ccee9677.jpg');
-        background-repeat: no-repeat;
-        min-height: 350px;
-    }
+  .jumbotron {
+    background-size: cover;
+    background-image: url('http://7xrau0.com5.z0.glb.clouddn.com/04561a0ccee9677.jpg');
+    background-repeat: no-repeat;
+    min-height: 350px;
+  }
 </style>
 {% endblock %}
 
@@ -16,11 +17,103 @@
 
 {% block page_content %}
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1>Hello world!</h1>
-        </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Hello world!</h1>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">最受欢迎的技术栈</h2>
+      <div class="col-lg-8">
+        <div id="keywords_stats"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">薪资平均数分布</h2>
+      <div class="col-lg-8">
+        <div id="salary_bar_chart"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">经验要求是什么</h2>
+      <div class="col-lg-8">
+        <div id="experience_pie_chart"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">哪些地区需求最旺盛</h2>
+      <div class="col-lg-8">
+        <div id="location_pie_chart"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">学历要求分布</h2>
+      <div class="col-lg-8">
+        <div id="degree_pie_chart"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-lg-12">
+        <h2 class="col-lg-12 chart-title">工作类型分布</h2>
+      <div class="col-lg-8">
+        <div id="type_pie_chart"></div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla.
+        </p>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+  {{super()}}
+  <script type="text/javascript" src="//cdn.bootcss.com/d3/3.5.17/d3.min.js"></script>
+  <script type="text/javascript" src="//cdn.bootcss.com/c3/0.4.11/c3.min.js"></script>
+  <script type="text/javascript" src={{url_for('static', filename='js/stats.js')}}></script>
+
+  <script>
+    plot_keywords('static/data/keywords_stats.json', '#keywords_stats');
+    plot_pie_chart('static/data/experience.json', '#experience_pie_chart');
+    plot_pie_chart('static/data/location.json', '#location_pie_chart');
+    plot_pie_chart('static/data/degree.json', '#degree_pie_chart');
+    plot_pie_chart('static/data/type.json', '#type_pie_chart');
+    plot_salary('static/data/salary.json', '#salary_bar_chart');
+  </script>
 
 {% endblock %}
