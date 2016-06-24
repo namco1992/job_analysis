@@ -19,26 +19,29 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Hello world!</h1>
+      <h1 class='page-header'>Python 工作岗位情况</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">最受欢迎的技术栈</h2>
-      <div class="col-lg-8">
+        <h2 class="col-lg-12 chart-title">最常见的技术关键词</h2>
+      <div class="col-lg-6">
         <div id="keywords_stats"></div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
+        <div id="keywords_cloud"></div>
+      </div>
+      <div class="col-lg-12">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
         </p>
       </div>
-
     </div>
+
     <div class="col-lg-12">
         <h2 class="col-lg-12 chart-title">薪资平均数分布</h2>
       <div class="col-lg-8">
-        <div id="salary_bar_chart"></div>
+        <div id="salary_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
@@ -106,14 +109,15 @@
   <script type="text/javascript" src="//cdn.bootcss.com/d3/3.5.17/d3.min.js"></script>
   <script type="text/javascript" src="//cdn.bootcss.com/c3/0.4.11/c3.min.js"></script>
   <script type="text/javascript" src={{url_for('static', filename='js/stats.js')}}></script>
-
+  <script type="text/javascript" src={{url_for('static', filename='js/d3.layout.cloud.js')}}></script>
   <script>
     plot_keywords('static/data/keywords_stats.json', '#keywords_stats');
     plot_pie_chart('static/data/experience.json', '#experience_pie_chart');
     plot_pie_chart('static/data/location.json', '#location_pie_chart');
     plot_pie_chart('static/data/degree.json', '#degree_pie_chart');
     plot_pie_chart('static/data/type.json', '#type_pie_chart');
-    plot_salary('static/data/salary.json', '#salary_bar_chart');
+    plot_pie_chart('static/data/salary.json', '#salary_pie_chart');
+    plot_keywords_cloud('static/data/keywords_cloud.json', '#keywords_cloud')
   </script>
 
 {% endblock %}
