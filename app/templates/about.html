@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}什么值得做 - 关于{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-1">
+            <h2 class="page-header">
+                关于
+            </h2>
+            <p>一个通过数据分析互联网工作情况的网站。每两周更新一次。</p>
+            <p>主要信息来源：<a href="">拉勾网</a></p>
+            <h3>Powered by</h3>
+            <table class="table table-striped table-hover ">
+              <tbody>
+                <tr style="margin-bottom: 10px">
+                  <td><a href="">Flask</a> + <a href="">gunicorn</a> + <a href="">nginx</a></td>
+                  <td>web server</td>
+                </tr>
+                <tr>
+                  <td><a href="">C3.js</a></td>
+                  <td>图表绘制</td>
+                </tr>
+                <tr>
+                  <td><a href="">scrapy</a></td>
+                  <td>开源 python 爬虫框架</td>
+                </tr>
+                <tr>
+                  <td><a href="">d3-cloud</a></td>
+                  <td>标签云绘制</td>
+                </tr>
+                <tr>
+                  <td><a href="">Bootstrap</a></td>
+                  <td>Twitter 的前端框架</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

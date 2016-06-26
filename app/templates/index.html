@@ -1,14 +1,10 @@
 {% extends "layout.html" %}
 {% block head %}
   {{ super() }}
-  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
   <link href="//cdn.bootcss.com/c3/0.4.11/c3.css" rel="stylesheet">
 <style>
   .jumbotron {
-    background-size: cover;
-    background-image: url('http://7xrau0.com5.z0.glb.clouddn.com/04561a0ccee9677.jpg');
-    background-repeat: no-repeat;
-    min-height: 350px;
+    background: linear-gradient(#2d618c 30%, #3776ab 95%)
   }
 </style>
 {% endblock %}
@@ -18,13 +14,24 @@
 {% block page_content %}
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class='page-header'>Python 工作岗位情况</h1>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <img src="{{url_for('static', filename='img/python-logo.png')}}" alt="python_logo">
+          </div>
+          <div class="col-lg-8">
+            <p style="color: #e6e8ea">
+              python 在拉勾上的职位共有3834个，以下是 python 岗位的有关数据。由于使用的关键字为“Python”或“python”，可能会遗漏某些未使用该关键字但是与 python 相关的岗位。
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">最常见的技术关键词</h2>
+    <div class="col-lg-12" id='tech_keywords'>
+        <h2 class="col-lg-12 chart-title">最常见的技术关键词<a class="anchor" href="#tech_keywords"> ¶</a></h2>
       <div class="col-lg-6">
         <div id="keywords_stats"></div>
       </div>
@@ -33,70 +40,102 @@
       </div>
       <div class="col-lg-12">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+          柱状图与标签云来自于同一组数据。柱状图中，纵轴为该关键词在岗位描述中出现的次数。在标签云中，你可以更直观地看出，python 的岗位还是以服务器端开发为主，并且 django 及 mysql 的热度远超其他。并且前端 html/css/javascript 出现的频率比我想象的更高，姑且认为在使用 python 的部分公司中，前端知识也是不可或缺的。
         </p>
       </div>
     </div>
 
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">薪资平均数分布</h2>
+    <div class="col-lg-12" id="salary_avg">
+        <h2 class="col-lg-12 chart-title">薪资平均数分布<a class="anchor" href="#salary_avg"> ¶</a></h2>
       <div class="col-lg-8">
         <div id="salary_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+          薪资的统计规则如下：
+          <div class="alert alert-success" role="alert">
+            <p>当薪资范围为闭区间时，取平均整数。例如8-16k，则平均值为12k。</p>
+            <p>当薪资范围是半开区间，例如“30k 以上”，则取最小值30k。</p>
+          </div>
+          可以看出超过三分之一的薪资均值落在11-15k 区间内，然后就是6-10k和16-20k 的区间。我知道脱离地区来谈薪资都是耍流氓，我会在后面加上地域筛选的 :)
         </p>
       </div>
 
     </div>
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">经验要求是什么</h2>
+    <div class="col-lg-12" id="exp_requirement">
+        <h2 class="col-lg-12 chart-title">经验要求是什么<a class="anchor" href="#exp_requirement"> ¶</a></h2>
       <div class="col-lg-8">
         <div id="experience_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+          不知道是好事还是坏事，半数以上的公司都需要1-3年经验的 python 开发者。我还没有统计过其他语言的情况，并没有发言权。但是这是不是意味着使用 python 的公司会在度过冷启动阶段之后，就切换到了其他语言呢？目前不得而知，但是我们会弄清楚的。
         </p>
       </div>
 
     </div>
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">哪些地区需求最旺盛</h2>
+    <div class="col-lg-12" id="location_requirement">
+        <h2 class="col-lg-12 chart-title">哪些地区需求最旺盛<a class="anchor" href="#location_requirement"> ¶</a></h2>
       <div class="col-lg-8">
         <div id="location_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+          接近半数以上的岗位都集中在帝都，果然是名不虚传。而这已经是提供的岗位超过30个的所有城市了。只能说 python 在国内的应用场景可能还是太少。不知道随着时间的推移，我们能否看到 python 在国内有一个更光明的未来。
         </p>
       </div>
 
     </div>
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">学历要求分布</h2>
+    <div class="col-lg-12" id="degree_requirement">
+        <h2 class="col-lg-12 chart-title">学历要求分布<a class="anchor" href="#degree_requirement"> ¶</a></h2>
       <div class="col-lg-8">
         <div id="degree_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla. Nunc mollis est in sapien fringilla viverra. Aenean id odio nibh. Proin consectetur sit amet mauris at egestas.
+          学历依然是敲门砖，只有不到五分之一的职位不要求学历。
         </p>
       </div>
 
     </div>
-    <div class="col-lg-12">
-        <h2 class="col-lg-12 chart-title">工作类型分布</h2>
+    <div class="col-lg-12" id="job_type">
+        <h2 class="col-lg-12 chart-title">工作类型分布<a class="anchor" href="#job_type"> ¶</a></h2>
       <div class="col-lg-8">
         <div id="type_pie_chart"></div>
       </div>
       <div class="col-lg-4">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum euismod velit, nec dignissim lacus ornare in. Aenean quis metus quis sem lacinia consectetur. Sed rutrum eget nibh a rutrum. Vestibulum pulvinar dui mi, ut faucibus quam laoreet sed. Nulla egestas purus quam, ut facilisis ipsum vulputate ac. Pellentesque eget dignissim quam. Praesent posuere nunc ac magna iaculis, vitae eleifend ipsum euismod. Quisque sed est vel urna sollicitudin maximus. Fusce ut gravida nisi. Suspendisse tempus nulla scelerisque, tempor est a, imperdiet nulla.
+          数据有一定局限性，在拉勾上应当很少有实习或者兼职招聘。
         </p>
       </div>
 
+    </div>
+
+    <div class="col-lg-12">
+    <hr>
+      <h2>Comments</h2>
+      <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+
+            var disqus_config = function () {
+                this.page.url = '{{ url_for("main.index", _external=True) }}';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = 'python'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() {  // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//jobanalysis.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
   </div>
 </div>
