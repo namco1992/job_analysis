@@ -3,9 +3,7 @@
   {{ super() }}
   <link href="//cdn.bootcss.com/c3/0.4.11/c3.css" rel="stylesheet">
 <style>
-  .jumbotron {
-    background: linear-gradient(#2d618c 30%, #3776ab 95%)
-  }
+
 </style>
 {% endblock %}
 
@@ -14,7 +12,7 @@
 {% block page_content %}
 <div class="container">
   <div class="row">
-    <div class="jumbotron">
+    <div class="python-jumbotron jumbotron">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
@@ -22,7 +20,7 @@
           </div>
           <div class="col-lg-8">
             <p style="color: #e6e8ea">
-              python 在拉勾上的职位共有3834个，以下是 python 岗位的有关数据。由于使用的关键字为“Python”或“python”，可能会遗漏某些未使用该关键字但是与 python 相关的岗位。
+              python 在拉勾上的职位共有3934个，以下是 python 岗位的有关数据。由于使用的关键字为“Python”或“python”，可能会遗漏某些未使用该关键字但是与 python 相关的岗位。
             </p>
           </div>
         </div>
@@ -81,7 +79,7 @@
       </div>
       <div class="col-lg-4">
         <p>
-          接近半数以上的岗位都集中在帝都，果然是名不虚传。而这已经是提供的岗位超过30个的所有城市了。只能说 python 在国内的应用场景可能还是太少。不知道随着时间的推移，我们能否看到 python 在国内有一个更光明的未来。
+          接近半数的岗位都集中在帝都，果然是名不虚传。而这已经是提供的岗位超过30个的所有城市了。只能说 python 在国内的应用场景可能还是太少。不知道随着时间的推移，我们能否看到 python 在国内有一个更光明的未来。
         </p>
       </div>
 
@@ -105,7 +103,7 @@
       </div>
       <div class="col-lg-4">
         <p>
-          数据有一定局限性，在拉勾上应当很少有实习或者兼职招聘。
+          数据有一定局限性，在拉勾上很少有实习或者兼职招聘。
         </p>
       </div>
 
@@ -116,11 +114,6 @@
       <h2>Comments</h2>
       <div id="disqus_thread"></div>
         <script>
-            /**
-             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-             */
-
             var disqus_config = function () {
                 this.page.url = '{{ url_for("main.index", _external=True) }}';  // Replace PAGE_URL with your page's canonical URL variable
                 this.page.identifier = 'python'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
@@ -156,7 +149,7 @@
     plot_pie_chart('static/data/degree.json', '#degree_pie_chart');
     plot_pie_chart('static/data/type.json', '#type_pie_chart');
     plot_pie_chart('static/data/salary.json', '#salary_pie_chart');
-    plot_keywords_cloud('static/data/keywords_cloud.json', '#keywords_cloud')
+    plot_keywords_cloud('static/data/keywords_cloud.json', '#keywords_cloud');
   </script>
 
 {% endblock %}

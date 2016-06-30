@@ -13,6 +13,12 @@ h1,h3,h4 {
   z-index: 1;
 }
 
+.python-jumbotron {
+  background-image: -webkit-linear-gradient(#2d618c 30%, #3776ab 95%);
+  background-image: -o-linear-gradient(#2d618c 30%, #3776ab 95%);
+  background-image: linear-gradient(#2d618c 30%, #3776ab 95%);
+}
+
 p {
   font-family:  Helvetica, "Microsoft YaHei",  "微软雅黑", STXihei, "华文细黑", Arial, sans-serif;
 }
@@ -22,6 +28,7 @@ h1 {
   position: relative;
   margin-bottom: 15px;
 }
+
 h3 {
   color: gray;
   padding-bottom: 15px;
@@ -60,7 +67,7 @@ html,body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
+  margin: 0 auto -80px;
 }
 
 /* Set the fixed height of the footer here */
