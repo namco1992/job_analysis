@@ -24,11 +24,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">什么值得做</a>
+      <a class="navbar-brand" href="{{ url_for('main.index') }}">什么值得做</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/">Python</a></li>
+        <li><a href="{{ url_for('main.index') }}">Python</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="{{ url_for('main.about_page') }}">关于</a></li>

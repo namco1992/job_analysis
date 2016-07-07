@@ -34,7 +34,7 @@ def create_app(config_name):
 
         # register the blueprint
         from .main import main as main_blueprint
-        app.register_blueprint(main_blueprint, url_prefix='/')
+        app.register_blueprint(main_blueprint, url_prefix='/job_analysis')
     except Exception, e:
         print traceback.format_exc()
 
