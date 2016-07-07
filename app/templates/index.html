@@ -143,13 +143,13 @@
   <script type="text/javascript" src={{url_for('static', filename='js/stats.js')}}></script>
   <script type="text/javascript" src={{url_for('static', filename='js/d3.layout.cloud.js')}}></script>
   <script>
-    plot_keywords('static/data/keywords_stats.json', '#keywords_stats');
-    plot_pie_chart('static/data/experience.json', '#experience_pie_chart');
-    plot_pie_chart('static/data/location.json', '#location_pie_chart');
-    plot_pie_chart('static/data/degree.json', '#degree_pie_chart');
-    plot_pie_chart('static/data/type.json', '#type_pie_chart');
-    plot_pie_chart('static/data/salary.json', '#salary_pie_chart');
-    plot_keywords_cloud('static/data/keywords_cloud.json', '#keywords_cloud');
+    plot_keywords('{{url_for('static', filename='data/keywords_stats.json')}}', '#keywords_stats');
+    plot_pie_chart('{{url_for('static', filename='data/experience.json')}}', '#experience_pie_chart');
+    plot_pie_chart('{{url_for('static', filename='data/location.json')}}', '#location_pie_chart');
+    plot_pie_chart('{{url_for('static', filename='data/degree.json')}}', '#degree_pie_chart');
+    plot_pie_chart('{{url_for('static', filename='data/type.json')}}', '#type_pie_chart');
+    plot_pie_chart('{{url_for('static', filename='data/salary.json')}}', '#salary_pie_chart');
+    plot_keywords_cloud('{{url_for('static', filename='data/keywords_cloud.json')}}', '#keywords_cloud');
   </script>
 
 {% endblock %}
